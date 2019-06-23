@@ -105,6 +105,7 @@ git config user.name - see the name set
 git init - initialize an existing directory as a Git repository
 git clone [url] - retrieve an entire repository from a hosted location via URL
 git add [file] - add a file as it looks now to your next commit (stage)
+git add .      - add all files of the folder
 git status -show modified files in working directory, staged for your next commit
 
 git commit -m "[descriptive message]" - commit your staged content as a new commit snapshot
