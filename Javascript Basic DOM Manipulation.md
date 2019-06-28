@@ -878,3 +878,606 @@ g
 ### Codepen with complex examples!
 
 <https://codepen.io/steviekong/pen/pXNwrY>
+
+
+
+Javascript Basics IV Notes:
+Arrays:
+Arrays are the most basic data structure that JavaScript offers users.
+
+Arrays can store any type of data including numbers strings booleans etc.
+
+Syntax:
+var array_name = [element1, element2 ...]
+Example:
+
+var numbers = [0, 2, 3, 56, 90]
+Empty Arrays:
+Lets say you have some data you want to store in an array at a later time. You can declare an empty array before you generate your data as follows.
+
+Example:
+
+var emptyArray = []
+Can you store multiple types of data in the same array ?
+The simple answer is YES!. JavaScript allows you to store all types of data within the same array.
+
+Example:
+
+var multiple = [12, "Masai", true]
+The above array multiple has 3 different types of data in it. Namely number string and boolean.
+
+Array Length
+Getting the array length is simple. Just use the arrayname.length property.
+
+Example:
+
+var numbers = [0, 1, 2, 3, 4]
+console.log(numbers.length)
+Output:
+
+5
+Accessing array elements:
+Just like strings we can use the array[index] syntax to access any element of an array.
+
+*Example:
+
+var fruits = ["apple", "pear", "mango", "banana"]
+console.log(fruits[0])
+console.log(fruits[fruits.length-1])
+Output:
+
+apple
+banana
+Looping Through Arrays
+Again just like strings we can loop through arrays and access each element by its index.
+
+Example:
+
+var cities = ["bangalore", "mumbai", "chennai", "new york", "hong kong"]
+
+for(var i = 0; i < cities.length;i++){
+	console.log(cities[i])
+}
+Output:
+
+bangalore
+mumbai
+chennai
+new york
+hong kong
+Adding to the End of an array:
+You can add an element to the end of an array by using the arrayname.push(element) function.
+
+Example:
+
+var cities = ["bangalore", "mumbai", "chennai", "new york", "hong kong"]
+cities.push("delhi")
+*Output:
+
+["bangalore", "mumbai", "chennai", "new york", "hong kong", "delhi"]
+Removing from the end of an array
+You can remove an element from the end of an array by using the arrayname.pop() function.
+
+Example:
+
+var cities = ["bangalore", "mumbai", "chennai", "new york", "hong kong"]
+cities.pop()
+*Output:
+
+["bangalore", "mumbai", "chennai", "new york"]
+The pop() function also returns the removed value.
+
+There are many more useful array functions available in JavaScript, you can read about them in this link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+Scope
+In programing Scope determines the accessibility (visibility) of variables.
+
+There are two types of scope in JavaScript:
+
+Local Scope
+Global Scope
+Local Variables
+Consider the following snippet of code
+
+// code here cannot access the `number` variable!
+function someFunction(){
+    var number = 20
+}
+// code here cannot access the `number` variable!
+In the above example only the code within the funciton someFunction can access the number variable.
+
+Global Variables
+Consider another snippet of code
+
+var number = 20
+//code here can access the `number` variable!
+function someFunction(){
+    //code here can access the `number` variable!
+}
+//code here can access the `number` variable!
+The variable number is said to be a global variable and can be accessed by any line of code below its declaration.
+
+Local Scope within functions
+Consider one last example
+
+for(var i = 0; i < 10; i++){
+    console.log(i)
+}
+// the variable `i` cannot be accessed here
+In the above example since i is declared within the for loop it cannot be accessed outside it!
+
+
+Week 3 - Day 3
+Javascript Basics V Notes:
+Introduction to events in JavaScript
+Events are actions that happen on a web page when users perform actions. Events also occur when browsers also perform actions.
+
+Example [1]:
+
+The user clicking the mouse over a certain element or hovering the cursor over a certain element.
+The user pressing a key on the keyboard.
+The user resizing or closing the browser window.
+A web page finishing loading.
+A form being submitted.
+A video being played, or paused, or finishing play.
+An error occurring.
+When these actions are performed by users events are fired in the browser window. Events are also usually attached to a specific element or multiple elements within a web page.
+
+There are 1000's of events in Javascript so we will only go over a few important ones.
+
+If you want to take a look all the events available in JavaScript visit this link https://developer.mozilla.org/en-US/docs/Web/Events
+
+Simple events
+Button Clicks
+You have already attached functions to button clicks within HTML tags but now we can use Event Handlers to do the same in a much more useful way.
+
+Example: HTML CODE SNIPPET:
+
+<button id = "changeColor">Click here to change my color</button>
+JavaScript Code Snippet:
+
+var changeButton = document.getElementById('changeColor');
+
+function random(number){
+  return Math.floor(Math.random()*number);
+}
+
+function switchColor()
+{
+    var randomColor = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+    changeButton.style.backgroundColor = randomColor;
+}
+changeButton.addEventListener('click', switchColor);
+In the above code we have attached a the click listener to the button element with the id changeColor using the addEventListener() function.
+
+When the button is clicked the listener function switchColor is called.
+
+The listener function then calls the random number to get a random color and sets the style.backgroundColor property of the button to the random color.
+
+Button Double Click
+As I mentioned before there are thousands of listeners in JavaScript. Another common listener for buttons is dblclick.
+
+This listener listens for a user double clicking the button.
+
+Example:
+
+HTML CODE SNIPPET:
+
+<button id = "changeColorDouble">Click here to change my color</button>
+JavaScript Code Snippet:
+
+ar doubleButton = document.getElementById('changeColorDouble');
+function switchColorDouble(){
+  var randomColor = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')'; // random is a function that I have defined above
+  
+  doubleButton.style.backgroundColor = randomColor
+}
+doubleButton.addEventListener('dblclick', switchColorDouble)
+Removing Listeners
+The best part of using the addEventListener function is that you can also remove listeners using the removeEventListener function.
+
+Consider the below example where where we want the button to change colors only 1 time.
+
+Example: HTML CODE SNIPPET:
+
+<button id = "changeColorOnce">Double Click here to change my color</button>
+JavaScript Code Snippet:
+
+var buttonOnce = document.getElementById('changeColorOnce');
+
+function switchColorOnce(){
+  var randomColor = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')'; // 
+  buttonOnce.style.backgroundColor = randomColor
+  buttonOnce.removeEventListener('click', switchColorOnce)
+}
+
+buttonOnce.addEventListener('click', switchColorOnce)
+This is the same code as the first example. However, once the function switchColorOnce() is called we also call the buttonOnce.removeEventListener('click', switchColorOnce) function which removes the event listener from the button.
+
+This means that the button only changes color once when it is clicked. After it is clicked once, if you try and click it again the button does not change color anymore.
+
+Validating Forms and preventDefault:
+You might have validated forms before but now you can do it easier with listeners.
+
+Look at the code below:
+
+Example: HTML CODE SNIPPET:
+
+<form id  = "nameForm">
+  <div>
+    <label for="fname">First name: </label>
+    <input id="fname" type="text">
+  </div>
+  <div>
+    <label for="lname">Last name: </label>
+    <input id="lname" type="text">
+  </div>
+  <div>
+     <input id="submit" type="submit">
+  </div>
+</form>
+<p id = "output"></p>
+JavaScript:
+
+var form = document.getElementById('nameForm');
+var fname = document.getElementById('fname');
+var lname = document.getElementById('lname');
+var submit = document.getElementById('submit');
+var para = document.getElementById('output');
+
+function validate(e){
+  if(fname.value == '' || lname.value == ''){
+    e.preventDefault()
+    para.textContent = "First name or last name is empty!"
+  }
+}
+
+form.addEventListener('submit', validate);
+Notice how we attach the listener to the form element and not the submit button!
+
+This is how you should be doing it normally!
+
+When forms are submitted in HTML the default or normal action is that the form gets submitted to the back-end.
+
+We use the e.preventDefault() function to override the default functionality.
+
+Instead we print some the error message "First name or last name is empty!" to a paragraph tag.
+
+The e argument is called the Event Object we will learn more about this later when we discuss Objects.
+
+For now just use it to call the e.preventDefault() function.
+
+Codepen.io Link:
+All examples discussed today are on the codepen! https://codepen.io/steviekong/pen/LKLqwm?editors=1111
+
+Mozilla Link
+If you want more information on events and listeners visit this link https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events
+
+Source Cited:
+[1] Introduction to events, Mozilla, https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events
+
+Week 3 - Day 3
+Session 2
+Basic DOM manipulation
+
+<div id="id1">
+    <div id="id2">
+        <div id="id3">
+            <p id="id4">
+                Some Text
+            </p>
+        </div>
+        <div id="id5">
+            Some Text
+        </div>
+    </div>
+    <div id="id6">
+        Some Text
+    </div>
+</div>
+Child node: A node directly inside another node id2 and id6 are child nodes of id1 also id3 is child node of id2 and id4 is child node of id3
+Descendant node: A node anywhere inside another node. id2 and id6 are child nodes of id1 and also descendants. id3 id4 id5 are not child nodes of id1 but descendants
+Sibling nodes: Nodes that sit on the same level. In the above example id2 and id6 are siblings and id3 and id5 are also siblings
+querySelector
+
+The querySelector() method returns the first element that matches one or more CSS selectors. If no match is found, it returns null.
+
+var ele = document.querySelector(selector);
+https://codepen.io/nrupuld/pen/BgdvQQ
+
+querySelectorAll
+
+The querySelectorAll() returns all elements that match the specified CSS selector.
+
+var eles = document.querySelectorAll(selector);
+Using Element Selector
+https://codepen.io/nrupuld/pen/QXMzOa
+
+Using Class Selectors
+https://codepen.io/nrupuld/pen/xoLmNx
+
+createElement
+
+The createElement() method creates a new HTML element
+
+document.createElement(tagName);
+https://codepen.io/nrupuld/pen/MMvLed
+
+appendChild
+
+The appendChild() method adds an element as the last child to the HTML element
+
+ele.appendChild(childEle);
+https://codepen.io/nrupuld/pen/zVdezv
+
+removeChild
+
+The removeChild() method removes a specified child element from the HTML element
+
+ele.removeChild(childEle);
+https://codepen.io/nrupuld/pen/ewExqz
+
+insertBefore
+
+The insertBefore() method adds a specified child element before another child element.
+
+ele.insertBefore(newEle, refEle);
+https://codepen.io/nrupuld/pen/dBzLVy
+
+Week 3 - Day 4
+Javascript Basics VI Notes:
+Introduction to Objects and revisiting types
+More Types!
+We have already discussed a few types of primitive data in JavaScript like string number boolean.
+
+Lets discuss a few more:
+
+null : null is a special primitive data type that signifies that a there is 'no value' or that there is a lack of value.
+
+It is important to note that JavaScript will never assign a null value to anything, only you the programmer can do that. This is because null is used to represent the intentional absence of any object value.
+
+null is often useful when you want to return nothing from a function. This is especially useful for handling errors!
+
+Example:
+
+var x = null
+
+console.log(x)
+
+if(x == null){
+    console.log('x is null!')
+}
+else{
+    console.log('x is not null!')
+}
+undefined: undefined is a another special primitive type that signifies that a variable has not been assigned any value. This is a default value that JavaScript assigns.
+
+This is often useful if you want to check if a variable contains a value yet.
+
+Example:
+
+var num;
+
+console.log(num)
+null and undefined are not the same in Javascript. If you want to read more about their difference visit this link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null
+
+Now onto Objects
+We have studied around 5 primitive types in JavaScript. There are two more but we can get to them later.
+
+Other than these primitive types the only other type is called an object.
+
+Other than the 7 primitive types almost everything else in JavaScript is an object.
+
+Some examples of objects you might have seen before:
+
+Math Object.
+String wrapper object.
+Number wrapper object.
+Every function in JavaScript is also a Function object!
+Array is also an object.
+Nearly everything in JavaScript is an object or acts like an object in the case of wrapper objects like String or Number.
+
+objects are a collection of properties. These properties can be modified by functions/methods that these objects provide you with.
+
+For example you have already seen the string.length property and the array.length property which gives you the length of arrays and objects.
+
+Accessing object properties
+You can access any object's property using the following syntax.
+
+Syntax:
+
+objectName.propertyName
+For example we access the length property of a string by using string.length.
+
+Making your own objects
+Lets say you have a person.
+
+A person may several properties like:
+
+Name
+Age
+Height
+Gender
+Hobbies
+We can define an object called person with several properties like so.
+
+Code:
+
+var person = {
+    name : "Sidharth",
+    age : 100,
+    height: "6 Ft 12 In",
+    gender : "Female",
+    hobbies: ["Coding", "Weight Lifting", "Running", "Eating"]
+}
+Now you have a person with several properties. Notice how the properties are different JavaScript types.
+
+You can then access those properties:
+
+var person = {
+    name : "Sidharth",
+    age : 100,
+    height: "6 Ft 12 In",
+    gender : "Female",
+    hobbies: ["Coding", "Weight Lifting", "Running", "Eating"]
+}
+
+console.log(person.name)
+
+console.log(person.age)
+
+console.log(person.Hobbies[1])
+Output:
+
+Sidharth
+100
+Weight Lifting
+Notice the syntax of the object. Each object is made up of multiple members.
+
+Each member has a key or name and a value. We calls these key-value pairs in programming.
+
+Adding new names/keys and modifying existing names/keys
+You can add new names/keys to an object with the following syntax. You can also modify values with the same syntax.
+
+objectname.name = value
+Example:
+
+var person = {
+    name : "Sidharth",
+    age : 100,
+    height: "6 Ft 12 In",
+    gender : "Female",
+    hobbies: ["Coding", "Weight Lifting", "Running", "Eating"]
+}
+
+person.favColor = "Red"
+person.name = "Piker"
+String wrapper object functions/methods
+The string wrapper object gives you some basic functions to modify and manipulate strings. Lets use some of these functions.
+
+substring() method
+The `substring(startIndex, endIndex)`` method returns a part of a string from an input string.
+
+The start index is the index of the first character in the output string.
+
+The end index is the index of the last character in the output string.
+
+Example:
+
+var input = "Welcome to Masai School"
+
+var output1 = input.substring(0, 6)
+var output2 = input.substring(4, 10)
+
+console.log(output1)
+console.log(output2)
+Output:
+
+Welcom
+ome to
+indexOf() method
+The indexOf(searchString) method returns the index of the first instance of the string you are searching for within the the given string.
+
+Example:
+
+var input = "Welcome to Masai School"
+
+var output = input.indexOf("Masai")
+
+console.log(output)
+Output:
+
+11
+toUpperCase() and toLowerCase()
+The toUpperCase() converts a string from lower case to upper case.
+
+Example:
+
+var input = "Welcome to Masai School"
+
+var output = input.toUpperCase();
+
+console.log(output)
+Output:
+
+WELCOME TO MASAI SCHOOL
+The toLowerCase() does the opposite and converts a string from lower case to upper case.
+
+Example:
+
+var input = "WELCOME TO MASAI SCHOOL"
+
+var output = input.toLowerCase();
+
+console.log(output)
+Output:
+
+welcome to masai school
+There are many more string wrapper object functions which you can check out here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#String_generic_methods
+
+Other useful function you may use in the future.
+Just like strings there are many useful function you may want to use.
+
+The Math object gives you many useful mathematical functions. You can check all these functions out here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
+
+The array object also gives you useful functions to manipulate arrays. You can check these out here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+There are thousands of objects in javascript so it would be difficult to go over all of them here.
+
+But all objects have specific properties and functions to manipulate those properties.
+
+Codepen link:
+https://codepen.io/steviekong/pen/orGpWR?editors=1011
+
+Week 3 - Day 4
+Session 2
+JS CSS & Style Manipulation
+
+snake_case
+camelCase
+Commonly used case in css
+
+caterpillar-case dash-case hypen-case kebab-case
+
+setAttribute
+
+The setAttribute() method adds the specified attribute to an element, and gives it the specified value.
+
+If the specified attribute already exists, only the value is set/changed.
+
+element.setAttribute(attributename, attributevalue)
+Adding Classes & IDs
+
+https://codepen.io/nrupuld/pen/VJMNBw
+
+Other Attributes
+
+https://codepen.io/nrupuld/pen/qzPwzW?editors=1010
+
+Using loops & conditional operators
+
+https://codepen.io/nrupuld/pen/KjXLpe
+
+removeAttribute
+
+The removeAttribute() method removes a given attribute of a specific HTML element.
+
+ele.removeAttribute(name);
+https://codepen.io/nrupuld/pen/gNXYOg
+
+style
+
+The HTMLElement.style property is used to get as well as set the inline style of an element.
+
+The style property has the same (and highest) priority in the CSS cascade as an inline style declaration set via the style attribute.
+
+ele.style.property = value
+https://codepen.io/nrupuld/pen/BgmBGV
+
+Using loops
+
+https://codepen.io/nrupuld/pen/OeOJyB
+
+CSS Properties DOM Notation accessed from JS
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference
