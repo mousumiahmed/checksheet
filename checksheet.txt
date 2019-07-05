@@ -1,6 +1,6 @@
 ﻿                          
 
-			           Ubuntu Basic Commands
+			           Ubuntu Basic Commands(Week1_Day1)
 
 
 ‘pwd’ - used to search current working directory
@@ -92,6 +92,80 @@ $ head -n 20 file.txt
 shows the first 20 lines of the file
 $ tail -n 20 file.txt
 shows the last 20 lines of the file
+pipline operator: '| ' This operator is used to connect output of one file to the input of the another file.we can use to connect the any number of file
+$ grep masai demo.txt | wc -l  it will collect the word 'masai' occur no of time in the file demo.txt and will count the no of occurance
+$ find <path>   -Find all the folders (including sub folders) and files in the given path
+
+$ find <path> -type d  use to Adding the flag -type d limits the search to directories
+
+$ find <path> -type f    Adding the flag -type f limits the search to files
+
+$ find <path> -type d | wc -l   use to counts all the files in a particular folder
+
+$ find <path> -type f -name "*.csv"  it used to Finds all the files in the given path whose name ends with .csv
+
+$ find <path> type f -name "*.csv" -size -1M   Finds all the files in the given path whose name ends with .csv and having size less than 1MB
+
+echo – Display a line of text
+
+$ echo "Hello MASAI" will display Hello MASAI
+
+$ echo "Hello MASAI" > masai.txt  it will  store the Hellow Masai in masai.txt
+
+Expansion
+
+$ echo *   
+
+Brace Expansion
+
+$ echo string_{a,b,c}
+Output: string_a string_b string_c
+$ echo number_{1..5}
+Output:number_1 number_2 number_3 number_4 number_5
+
+$ uniq demo.txt - Report or Omit Repeated Lines.but before using unique we have to sorted the file first
+
+$ sort demo.txt | uniq This will now gives us the unique lines from the file demo.txt
+
+$ uniq -d sorted.txt This will only show the duplicate lines from the files
+
+$ uniq -c sorted.txt Outputs the list of lines preceded by the number of times the line occurs
+
+$ tar The tar program is the classic tool for archiving files
+
+C Create an archive from a list of files and/or directories
+x Extract an archive
+t List the contents of an archive
+$ tar -cf demo.tar -demo Creates a tar file from all the folders and files in the folder demo to a file called demo.tar
+$ tar -tf demo.tar Lists the contents of the tar file demo.tar
+$ tar -xf demo.tar
+Extracts the contents of the file demo.tar
+
+nano -Popular command line text editor
+
+$ nano :Opens the editor
+
+$ nano file.txt  Opens the editor with the file file.txt
+
+[Ctrl]o - Write to file
+
+[Ctrl]w - Search for word
+
+[Ctrl][Shift]- [Ctrl]_ - Go to line
+
+[Ctrl]k - Cut line
+
+[Ctrl]u- Uncut (Paste)
+
+touch -The touch command is usually used to set or update the access, change, and modify times of files. However, if a filename argument is that of a nonexistent file, an empty file is created
+
+$ touch file.txt -Creates the file file.txt if not exists
+
+$ touch file1 file2 -Creates the files file1 and file2 if not exists
+
+$ touch file-{a,b,c,d} Creates the files file-a file-b file-c file-d if not exists
+
+< Standard Input  :Using the < redirection operator, we change the source of standard input from the key board to the file demo.txt
 
 
  
