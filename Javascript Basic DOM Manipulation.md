@@ -889,7 +889,10 @@ g
 
 
 Javascript Basics IV Notes:
+
+
 Arrays:
+
 Arrays are the most basic data structure that JavaScript offers users.
 
 Arrays can store any type of data including numbers strings booleans etc.
