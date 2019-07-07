@@ -195,9 +195,9 @@ $ git log  -show all commits in the current repository history
 				
 
 
-JavaScript is a scripting or programming language that allows you to implement complex things on web pages — every time a web page does more than just sit there and display static information for you to look at — displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. — you can bet that JavaScript is probably invo
+JavaScript is a scripting or programming language that allows you to implement complex things on web pages — every time a web page does more than just sit there and display static information for you to look at — displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. 
 
-How to write Javascript
+Javascript code are written within the script tag
 
 <script>
 function doSomething(){
