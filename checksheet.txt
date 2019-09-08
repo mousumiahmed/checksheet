@@ -1,6 +1,6 @@
 ﻿                          
 
-			           Ubuntu Basic Commands(Week1_Day1)
+			         Ubuntu Basic Commands(Week1_Day1)
 
 
 ‘pwd’ - used to search current working directory
@@ -39,14 +39,14 @@ Wildcards:It provides special characters to help us rapidly specify groups of fi
 * - Matches any characters ?- Matches any single character
 
 mkdir <directory> - create directory
-mkdir <dir1> <dir2> <dir3> - create multiple directories
+mkdir <dir1> <dir2> <> - create multiple directories
 mkdir -p <dir1>/<dir2>/<dir3> - create intermediate directories as required
 cp <item1> <item2> - copies the single file or directory item1 to the file or directory item2
 cp file1 file2 dir1  - Copy file1 and file2 into directory
 cp dir1/* dir2 - Using a wildcard, copy all the files in dir1 into dir2. The directory dir2 must already exist.
 cp -r dir1 dir2 - Copy the contents of directory dir1 to directory dir2.
 mv <item1> <item2> - performs both file moving and file renaming mv file1 file2 - Move file1 to file2
-rm <item>  - used to remove (delete) files and directories
+rm <item>  - used to redir3move (delete) files and directories
 rm -r dir1 - Delete dir1 and its contents.
 rm -r file1 dir1 - Delete file1 and dir1 and its contents.
 wget <location>  - command-line program for file downloading
@@ -88,10 +88,8 @@ $ head file.txt
 shows the first 10 lines of the file
 $ tail file.txt
 shows the last 10 lines of the file
-$ head -n 20 file.txt
-shows the first 20 lines of the file
-$ tail -n 20 file.txt
-shows the last 20 lines of the file
+$ head -n 20 file.txt  ...shows the first 20 lines of the file
+$ tail -n 20 file.txt  ...shows the last 20 lines of the file
 pipline operator: '| ' This operator is used to connect output of one file to the input of the another file.we can use to connect the any number of file
 $ grep masai demo.txt | wc -l  it will collect the word 'masai' occur no of time in the file demo.txt and will count the no of occurance
 $ find <path>   -Find all the folders (including sub folders) and files in the given path
@@ -1382,13 +1380,21 @@ Functions within objects and this keyword Since functions are also objects in Ja
 
 
 
- function defined within an object.
+function defined within an object.
 
 Example:
 
-var person = { name : "Sidharth", age : 100, height: "6 Ft 12 In", gender : "Female", hobbies: ["Coding", "Weight Lifting", "Running", "Eating"], printDetails: function(){ for(key in this){ var output = key + ":" + person[key] console.log(output) } } };
+var person = { name : "Sidharth", 
+age : 100, 
+height: "6 Ft 12 In", 
+gender : "Female", 
+hobbies: ["Coding", "Weight Lifting", "Running", "Eating"], 
+printDetails: function(){ for(key in this){ var output = key + ":" + person[key] 
+console.log(output) } } };
 
-person.printDetails() Output:
+person.printDetails() 
+
+Output:
 
 name:Sidharth age:100 height:6 Ft 12 In gender:Female hobbies:Coding,Weight Lifting,Running,Eating printDetails:function(){ for(key in this){ var output = key + ":" + person[key] console.log(output) } } Notice how we use the this keyword in the function and not the name of the object. The this keyword is used to refer to the object itself in javaScript.
 
@@ -1398,45 +1404,68 @@ Look at the example below:
 
 Example:
 
-var person = { name : "Sidharth", age : 100, height: "6 Ft 12 In", gender : "Female", hobbies: ["Coding", "Weight Lifting", "Running", "Eating"], printDetails: function(){ for(key in person){ var output = key + ":" + person[key] console.log(output) } } };
+var person = { name : "Sidharth", age : 100, height: "6 Ft 12 In", gender : "Female", hobbies: ["Coding", "Weight Lifting", "Running", "Eating"], printDetails: function(){ for(key in person){ var output = key + ":" + person[key] 
+console.log(output) 
+} } };
 
-person.printDetails() Output:
+person.printDetails() 
+Output:
 
 name:Sidharth age:100 height:6 Ft 12 In gender:Female hobbies:Coding,Weight Lifting,Running,Eating printDetails:function(){ for(key in this){ var output = key + ":" + person[key] console.log(output) } } Using this keyword to modify function properties We can also use functions to update properties like so.
 
 Example:
 
-var person = { name : "Sidharth", age : 100, height: "6 Ft 12 In", gender : "Female", hobbies: ["Coding", "Weight Lifting", "Running", "Eating"], printDetails: function(){ for(key in person){ var output = key + ":" + person[key] console.log(output) } }, addHobby: function(hobby){ this.hobbies.push(hobby) } }; console.log(person.hobbies) person.addHobby("Swimming") console.log(person.hobbies) Output:
+var person = { name : "Sidharth", age : 100, height: "6 Ft 12 In", gender : "Female", hobbies: ["Coding", "Weight Lifting", "Running", "Eating"], printDetails: function(){ for(key in person){ 
+  var output = key + ":" + person[key] 
+  console.log(output) } }, 
+  addHobby: function(hobby){ 
+    this.hobbies.push(hobby) 
+    } }; 
+    console.log(person.hobbies) 
+    person.addHobby("Swimming") 
+    console.log(person.hobbies) 
+    Output:
 
 [ 'Coding', 'Weight Lifting', 'Running', 'Eating' ] [ 'Coding', 'Weight Lifting', 'Running', 'Eating', 'Swimming' ] The addHobby function accepts a hobby as an argument and updates the this.hobbies array with a new hobby.
 
-Constructors in JavaScript We made one person object with several properties but if we wanted to make another person we need to write the same bit of code over and over.
+Constructors:  In JavaScript We made one person object with several properties but if we wanted to make another person we need to write the same bit of code over and over.
 
 JavaScript actually makes it very easy to create an object constructor.
 
-Think of a constructor as a skeleton of our person. It has no properties, but we can use it to create any number of new person objects!
+constructor is like as a skeleton of our person. It has no properties, but we can use it to create any number of new person objects!
 
-Important note!: According to mozilla "A constructor function name usually starts with a capital letter — this convention is used to make constructor functions easier to recognize in code."
+Important note: According to mozilla "A constructor function name usually starts with a capital letter — this convention is used to make constructor functions easier to recognize in code."
 
 So always name you constructor functions starting with a capital letter!
 
 Example:
 
-function Person(name, age, height, gender, hobbies){ this.name = name; this.age = age this.height = height this.gender = gender this.hobbies = [hobbies] }
+function Person(name, age, height, gender, hobbies){ 
+  this.name = name; 
+  this.age = age 
+  this.height = height 
+  this.gender = gender 
+  this.hobbies = [hobbies] }
 
-var sid = new Person("Sidharth", 90, "7 ft 9 in", "Male", ["swimming", "boxing"]); var sam = new Person("Sam", 67, "2 ft 3 in", "Male", ["dancing", "running"]);
+var sid = new Person("Sidharth", 90, "7 ft 9 in", "Male", ["swimming", "boxing"]); 
+var sam = new Person("Sam", 67, "2 ft 3 in", "Male", ["dancing", "running"]);
 
-console.log(sid) console.log(sam) *Output:
+console.log(sid) 
+console.log(sam) 
+*Output:
 
 Person { name: 'Sidharth', age: 90, height: '7 ft 9 in', gender: 'Male', hobbies: [ [ 'swimming', 'boxing' ] ] }
 
-Person { name: 'Sam', age: 67, height: '2 ft 3 in', gender: 'Male', hobbies: [ [ 'dancing', 'running' ] ] } As you can see sid and sam are both Person objects but they have different attributes!
+Person { name: 'Sam', age: 67, height: '2 ft 3 in', gender: 'Male', hobbies: [ [ 'dancing', 'running' ] ] } Here sid and sam are both Person objects but they have different attributes!
 
 You can make new objects from constructors using the new keyword.
 
 CodePen: https://codepen.io/steviekong/pen/ZdaBxN
 
+
 Week 4 - Day 3 Javascript Basics VIII Notes: JSON (JavaScript Object Notation) So what is JSON?
+
+
 
 According to Mozilla - "JavaScript Object Notation (JSON) is a standard text-based format for representing structured data based on JavaScript object syntax." [1]
 
@@ -1452,17 +1481,32 @@ What Does JSON look like ? A JSON string's format is very similar to a regular J
 
 It also consists of key - value pairs.
 
-It supports the 6 common data types in JavaScript, String Number Array Boolean Null Object.
+It supports the 6 common data types in JavaScript, String, Number, Array, Boolean, Null, Object.
 
 Lets look at an example of a JSON object below:
 
 var emp =
 
-{ "Employees" : [ { "userId":"sqwert", "jobTitleName":"Developer", "firstName":"Sam", "lastName":"Pat", "preferredFullName":"Samuel Patrick", "employeeCode":"E1", "region":"CA", "phoneNumber":"123-4567890", "emailAddress":"abc@gmail.com" }, { "userId":"amir1337", "jobTitleName":"Front-end Developer", "firstName":"Amir", "lastName":"Khan", "preferredFullName":"Amir Khan", "employeeCode":"E2", "region":"MA", "phoneNumber":"098-7654321", "emailAddress":"xyz@gmail.com" } ], "count": 2 }
+{ "Employees" : [ { 
+  "userId":"sqwert", 
+  "jobTitleName":"Developer", 
+  "firstName":"Sam", 
+  "lastName":"Pat", 
+  "preferredFullName":"Samuel Patrick", 
+  "employeeCode":"E1", 
+  "region":"CA", 
+  "phoneNumber":"123-4567890", 
+  "emailAddress":"abc@gmail.com" }, 
+  
+  { "userId":"amir1337", "jobTitleName":"Front-end Developer", "firstName":"Amir", "lastName":"Khan", "preferredFullName":"Amir Khan", "employeeCode":"E2", "region":"MA", "phoneNumber":"098-7654321", "emailAddress":"xyz@gmail.com" } ], "count": 2 }
 
-console.log(emp["Employees"][0]["region"]) console.log(emp["Employees"][1]["phoneNumber"]) Output:
+console.log(emp["Employees"][0]["region"]) 
+console.log(emp["Employees"][1]["phoneNumber"]) 
+Output:
 
-CA 098-7654321 In the above example, the JSON contains a key called Employees which is an array. It contains 2 objects with several fields.
+CA 098-7654321 
+
+In the above example, the JSON contains a key called Employees which is an array. It contains 2 objects with several fields.
 
 Any data from the above object can be accessed in the same way as a regular JavaScript object literal as you can see from the example.
 
@@ -1476,7 +1520,12 @@ To convert from a JSON string to a JavaScript Object we can use the JSON.parse m
 
 Example:
 
-var person = { name : "Sidharth", age : 100, height: "6 Ft 12 In", gender : "Female", hobbies: ["Coding", "Weight Lifting", "Running", "Eating"] }
+var person = { 
+  name : "Sidharth", 
+  age : 100, 
+  height: "6 Ft 12 In", 
+  gender : "Female", 
+  hobbies: ["Coding", "Weight Lifting", "Running", "Eating"] }
 
 var json = JSON.stringify(person)
 
@@ -1484,7 +1533,8 @@ console.log(json)
 
 var regularObject = JSON.parse(json)
 
-console.log(regularObject) Output:
+console.log(regularObject) 
+Output:
 
 {"name":"Sidharth","age":100,"height":"6 Ft 12 In","gender":"Female","hobbies":["Coding","Weight Lifting","Running","Eating"]}
 
@@ -1500,63 +1550,81 @@ This, means we can assign them to variables. This is known as a function express
 
 Example:
 
-var sum = function(x, y){ return x + y }
+var sum = function(x, y)
+  {
+   return x + y
+    }
 
-var division = function(x, y){ return x / y }
+var division = function(x, y)
+{ 
+  return x / y 
+  }
 
-console.log(sum(1, 2)) console.log(division(10,5)) This can often be useful when we want to use functions as variables, add them to arrays or objects. Or even pass them as arguments to other functions!
+console.log(sum(1, 2)) 
+console.log(division(10,5)) 
+
+This can often be useful when we want to use functions as variables, add them to arrays or objects. Or even pass them as arguments to other functions!
 
 We will go over functions as arguments in the next part.
 
 Callback functions A callback function is a function that is passed as an argument to another function, to be “called back” at a later time. [2]
 
-Lets take a look at an example to see what this means in more detail.
+
 
 Example:
 
-function sum(x, y, callBack){ var sum = x + y callBack(sum) }
+function sum(x, y, callBack){
+ var sum = x + y callBack(sum)
+  }
 
-var print = function(toPrint){ console.log(toPrint) }
+var print = function(toPrint){
+   console.log(toPrint)
+    }
 
-sum(4, 5, print) Output:
+sum(4, 5, print) 
+Output:9
 
-9 As you can see we passed the print function as an argument to the sum function. First the sum function calculated the sum of x and y and then the print function was called after the sum was calculated to print the sum to the console.
+As you can see we passed the print function as an argument to the sum function. First the sum function calculated the sum of x and y and then the print function was called after the sum was calculated to print the sum to the console.
 
 Codepen Link https://codepen.io/steviekong/pen/agqgde
 
 Common functions that take callbacks as arguments Many functions in JavaScript will often take functions as arguments and it is important to understand how they work!
 
-Array.foreach()
-
-The forEach() method runs a given callback function on every element of an array.
+Array.foreach() :The forEach() method runs a given callback function on every element of an array.
 
 Example:
 
 var arr = [1, 2, 3, 4, 5];
 
-arr.forEach(function(element){ console.log(element) }); Output:
-
-1 2 3 4 5 As you can see the forEach function performs a very similar role as a regular for loop. That is, it performs some piece of code for every element in the array.
+arr.forEach(function(element){ 
+  console.log(element) 
+  }); 
+  
+  Output:1 2 3 4 5 
+  
+ forEach function performs a very similar role as a regular for loop. That is, it performs some piece of code for every element in the array.
 
 However, the forEach method can only be used with an array as it is a method of the Array object!
 
-Array.map()
-
-The map() method creates a new array with the results of applying a callback function on every element of the original array.
+Array.map() : The map() method creates a new array with the results of applying a callback function on every element of the original array.
 
 Example:
 
 var arr = [1, 2, 3, 4, 5]
 
-var timesTwo = arr.map(function (element){ return element *2 });
+var timesTwo = arr.map(function (element){ 
+  
+  return element *2 });
 
-console.log(timesTwo) Output:
+console.log(timesTwo) 
+Output:[ 2, 4, 6, 8, 10 ] 
 
-[ 2, 4, 6, 8, 10 ] The above function simply accepted an element, multiplied by 2 and returned the value. The map applies the callback function to each element and returns a new modified array.
+The above function simply accepted an element, multiplied by 2 and returned the value. The map applies the callback function to each element and returns a new modified array.
 
-There are many more interesting Array functions which accept functions as arguments.
+There are many more Array functions which accept functions as arguments.
 
 Codepen link: https://codepen.io/steviekong/pen/MMVKew?editors=1111
+
 
 You can check them out here https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 
@@ -1564,7 +1632,11 @@ Citations [1] Mozilla, 2019, Working with JSON, https://developer.mozilla.org/en
 
 [2] FreeCodeCamp, 2019, CallBack functions, https://guide.freecodecamp.org/javascript/callback-functions/
 
-JavaScript Basics IX Notes: Fetching Data From a Server All this time we have been making web applications but they don't actually connect to the web!
+
+
+JavaScript Basics IX Notes: 
+
+Fetching Data From a Server All this time we have been making web applications but they don't actually connect to the web!
 
 Whats the point in making an application if it can't send and retrieve data from the Internet?
 
@@ -1574,13 +1646,7 @@ In this next part we are going to learn about the basics of the web and how to r
 
 Some groundwork about the Web The web itself is a very complex network of billions of computers (possibly trillions), but thanks to advancements in software and web technology, it is an easy process for front-end developers to send and retrieve data from servers.
 
-Client Server Model Real Life Explanation:
 
-Imagine you are at a restaurant and you want to get some food.
-
-You look at the menu and request the waiter to GET you some dosa.
-
-The waiter looks at your request and responds by giving you your dosa.
 
 Technical Explanation:
 
@@ -1592,22 +1658,32 @@ GET is one of many HTTP request methods you would use to request data from a web
 
 This might be a lot to take in but I think it will get simpler once you are able to use it in JavaScript.
 
-The XMLHttpRequest The XMLHttpRequest object used to send and receive HTTP requests.
+The XMLHttpRequest: The XMLHttpRequest object used to send and receive HTTP requests.
 
 Lets take a look at a simple example where we send a simple GET request and retrieve some JSON data.
 
 The freeCodeCamp weather API accepts Latitude and Longitude and returns weather information in JSON format.
 
-You can see it's documentation here https://fcc-weather-api.glitch.me/
+ documentation here https://fcc-weather-api.glitch.me/
 
 Lets try and retrieve the weather information for Bangalore.
 
 // This creates a new XMLHttpsRequest() object var xhr = new XMLHttpRequest();
 
-// This configures the object to perform a GET request to the given url // Notice how we pass lat=12.9716&lon=77.5946, this is the latitude and longitude for Bangalore. xhr.open('GET', 'https://fcc-weather-api.glitch.me/api/current?lat=12.9716&lon=77.5946'); // This will send the GET request to the server. xhr.send() // This function will be called after the information is retrieved xhr.onload = function (){ // The HTTP 200 status code is returned when your request is successful so we check for that if(xhr.status == 200){
-console.log(xhr.response) // Print the response from the server after a successful request } else{ // If the request is unsuccessful we print some error text along with the error code console.log("Error Code is:" + xhr.status) } } Output:
+// This configures the object to perform a GET request to the given url // Notice how we pass lat=12.9716&lon=77.5946, this is the latitude and longitude for Bangalore. 
+xhr.open('GET', 'https://fcc-weather-api.glitch.me/api/current?lat=12.9716&lon=77.5946'); // This will send the GET request to the server. 
+xhr.send() // This function will be called after the information is retrieved 
+xhr.onload = function (){ // The HTTP 200 status code is returned when your request is successful so we check for that 
+if(xhr.status == 200){
+console.log(xhr.response) // Print the response from the server after a successful request 
+} else{ // If the request is unsuccessful we print some error text along with the error code 
+console.log("Error Code is:" + xhr.status) } } 
 
-"{'coord':{'lon':77.59,'lat':12.97},'weather':[{'id':802,'main':'Clouds','description':'scattered clouds','icon':'https://cdn.glitch.com/6e8889e5-7a72-48f0-a061-863548450de5%2F03d.png?1499366020890'}],'base':'stations','main':{'temp':29.6,'pressure':1009,'humidity':45,'temp_min':27.78,'temp_max':31},'visibility':10000,'wind':{'speed':7.2,'deg':270},'clouds':{'all':40},'dt':1562059584,'sys':{'type':1,'id':9205,'message':0.0078,'country':'IN','sunrise':1562027230,'sunset':1562073580},'timezone':19800,'id':1277333,'name':'Bangalore','cod':200}" CodePen Link: https://codepen.io/steviekong/pen/PreYVZ
+Output:
+
+"{'coord':{'lon':77.59,'lat':12.97},'weather':[{'id':802,'main':'Clouds','description':'scattered clouds','icon':'https://cdn.glitch.com/6e8889e5-7a72-48f0-a061-863548450de5%2F03d.png?1499366020890'}],'base':'stations','main':{'temp':29.6,'pressure':1009,'humidity':45,'temp_min':27.78,'temp_max':31},'visibility':10000,'wind':{'speed':7.2,'deg':270},'clouds':{'all':40},'dt':1562059584,'sys':{'type':1,'id':9205,'message':0.0078,'country':'IN','sunrise':1562027230,'sunset':1562073580},'timezone':19800,'id':1277333,'name':'Bangalore','cod':200}" 
+
+CodePen Link: https://codepen.io/steviekong/pen/PreYVZ
 
 As you can see we got a response from the server with some JSON.
 
@@ -1625,7 +1701,11 @@ These codes mean many things and can be useful in debugging your program.
 
 Some common HTTP status codes codes and their meanings:
 
-200 : OK - This is the standard HTTP response when the request was successful. 400 : Bad Request- You will get this error when you make a "Bad" or "Incorrect" request. 404: Not Found - You will get this error when the resource you are looking for on the server is not found. There are many more error codes in HTTP which you can look at here https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+200 : OK - This is the standard HTTP response when the request was successful. 
+400 : Bad Request- You will get this error when you make a "Bad" or "Incorrect" request. 
+404: Not Found - You will get this error when the resource you are looking for on the server is not found.
+
+ There are many more error codes in HTTP which you can look at here https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
 
 Now lets display the data! In the code below after a button is clicked the data will be displayed.
 
@@ -1659,38 +1739,11 @@ Simply by passing 2 strings to the getWeatherData function.
 
 Example:
 
-// This function will get JSON data from the server and call the printWeatherData function! //The argument displayFunction is a function! //The argument latitude is a string from the input with id = "latitude" //The argument longitude is a string from the input with id ="longitude" 
+// This function will get JSON data from the server and call the printWeatherData function! //The argument displayFunction is a function! //The argument latitude is a string from the input with id = "latitude" //The argument longitude is a string from the input with id ="longitude" function getWeatherData(displayFunction, latitude, longitude){ var result = null; var xhr = new XMLHttpRequest(); xhr.open('GET', 'https://fcc-weather-api.glitch.me/api/current?lat=' +latitude +'&lon='+longitude); //Here I have simply appended latitude and longitude to the string xhr.send() xhr.onload = function (){ if(xhr.status == 200){ result = xhr.response; printWeatherData(result); } else{ console.log("Error Code is:" + xhr.status); } } }
 
-function getWeatherData(displayFunction, latitude, longitude){ 
-var result = null; 
-var xhr = new XMLHttpRequest(); 
-xhr.open('GET', 'https://fcc-weather-api.glitch.me/api/current?lat=' +latitude +'&lon='+longitude); //Here I have simply appended latitude and longitude to the string 
-xhr.send() 
-xhr.onload = function (){ 
-if(xhr.status == 200){ 
-result = xhr.response; printWeatherData(result); 
-} 
-else{ 
-console.log("Error Code is:" + xhr.status); 
-} } }
+// This function will check the input to see if it is null and print the input to a p tag if it is not null. var printWeatherData = function (input){ var body = document.querySelector('body'); var display = document.createElement('p'); if(input == null){ // checking if the input is null display.textContent = 'Error! No weather data received or invalid request!'; //It will print an error if the input is null } else{ display.textContent = input; //Otherwise it will display the text } body.append(display); }
 
-// This function will check the input to see if it is null and print the input to a p tag if it is not null. 
-var printWeatherData = function (input){
-var body = document.querySelector('body'); 
-var display = document.createElement('p'); 
-if(input == null){ // checking if the input is null display.textContent = 'Error! No weather data received or invalid request!'; //It will print an error if the input is null } 
-else{ 
-display.textContent = input; //Otherwise it will display the text } 
-body.append(display); 
-}
-
-//Button and listener for the click here to print the weather data! button //The block of code below was changed from the previous example. var displayBtn = document.querySelector('#printWeather') 
-displayBtn.addEventListener('click',function(){ 
-var latitude = document.querySelector('#latitude').value 
-var longitude = document.querySelector('#longitude').value 
-getWeatherData(printWeatherData, latitude, longitude); 
-}); 
-CodePen Link:
+//Button and listener for the click here to print the weather data! button //The block of code below was changed from the previous example. var displayBtn = document.querySelector('#printWeather') displayBtn.addEventListener('click',function(){ var latitude = document.querySelector('#latitude').value var longitude = document.querySelector('#longitude').value getWeatherData(printWeatherData, latitude, longitude); }); CodePen Link:
 
 https://codepen.io/steviekong/pen/bPMqzy.
 
@@ -1698,8 +1751,11 @@ A few takeaways Notice how we executed a chain of functions.
 
 displayBtn.addEventListener -> callback anonymous function -> getWeatherData -> xhr.onload -> printWeatherData
 
+This is intentional!
 
-Note:we only call the printWeatherData function after we get some data from the server!
+We structured our code in such a way because everything needs to happen one after the other in asynchronous programming.
+
+Also notice we only call the printWeatherData function after we get some data from the server!
 
 If we tried to store this data to a global variable or return it at the end of our function, our code will return an undefined variable.
 

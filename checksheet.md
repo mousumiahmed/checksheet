@@ -1,3 +1,0 @@
-                          
-
-			           Ubuntu Basic Commands
